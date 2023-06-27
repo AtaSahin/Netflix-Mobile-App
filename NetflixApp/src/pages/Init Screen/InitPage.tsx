@@ -3,8 +3,13 @@ import { ScrollView, Text, Touchable, TouchableOpacity, View } from 'react-nativ
 import { SafeAreaView } from 'react-native-safe-area-context';
 import styles from './Initpage.styles';
 import InitImage from '../../assets/InitBg';
+import { useNavigation } from '@react-navigation/native';
 
 function InitPage(props) {
+const navigation=useNavigation();
+
+
+
     return (
    <SafeAreaView style={styles.container}>
     <ScrollView horizontal contentContainerStyle={styles.scrollStyle}>
@@ -16,7 +21,7 @@ function InitPage(props) {
 
     </View>
     </ScrollView>
-  <TouchableOpacity style={styles.signInButton}>
+  <TouchableOpacity style={styles.signInButton} onPress={()=> navigation.navigate("SignInPage")}>
 <Text style={styles.signInText}>SIGN IN</Text>
   </TouchableOpacity>
    </SafeAreaView>
