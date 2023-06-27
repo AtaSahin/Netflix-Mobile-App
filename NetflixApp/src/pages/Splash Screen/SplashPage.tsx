@@ -17,7 +17,7 @@ useEffect(()=> {
 
     return (
  <SafeAreaView style={styles.container}>
-    <View style={styles.container}>
+    <View>
         <View style={styles.logoImage}>
         
         <SplashImage></SplashImage>

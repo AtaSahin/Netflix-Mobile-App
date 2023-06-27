@@ -4,6 +4,9 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import SplashPage from '../pages/Splash Screen/SplashPage';
 import InitPage from '../pages/Init Screen/InitPage';
+import SplashImage from '../assets/SplashBg';
+import SplashImageLogo from '../assets/SplashBgLogo';
+import { Text } from 'react-native';
 function Home() {
     const Tab = createBottomTabNavigator();
     return (
@@ -25,7 +28,21 @@ function Home() {
             options={{ headerShown: false }}
           />
           <Stack.Screen  options={{ headerShown: false }} name="SplashPage" component={SplashPage} />
-          <Stack.Screen  options={{ headerShown: false }} name="InitPage" component={InitPage} />
+
+          <Stack.Screen
+      name="InitPage"
+      component={InitPage}
+      options={{
+        headerStyle: {
+          backgroundColor: 'black',
+        },
+        headerTitle: () => (
+       <SplashImageLogo></SplashImageLogo>
+        ),
+        headerBackVisible:true
+      }}
+ 
+    />
  
         </Stack.Navigator>
     
