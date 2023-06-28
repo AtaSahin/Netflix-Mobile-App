@@ -1,30 +1,27 @@
-import React, { useEffect } from 'react';
-import { SafeAreaView, View } from 'react-native';
+import React, {useEffect} from 'react';
+import {SafeAreaView, View} from 'react-native';
 import styles from './SplashPage.styles';
 import SplashImage from '../../assets/SplashBg';
-import { useNavigation } from '@react-navigation/native';
+import {useNavigation} from '@react-navigation/native';
 
 function SplashPage() {
-const navigation=useNavigation();
-useEffect(()=> {
+  const navigation = useNavigation();
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      navigation.navigate('InitPage');
+    }, 3000);
+    return () => clearTimeout(timer);
+  }, [navigation]);
 
-    const timer =setTimeout(()=> {
-        navigation.navigate("InitPage");
-
-    },3000);
-    return ()=> clearTimeout(timer);
-},[navigation]);
-
-    return (
- <SafeAreaView style={styles.container}>
-    <View>
+  return (
+    <SafeAreaView style={styles.container}>
+      <View>
         <View style={styles.logoImage}>
-        
-        <SplashImage></SplashImage>
+          <SplashImage></SplashImage>
         </View>
-    </View>
- </SafeAreaView>
-    );
+      </View>
+    </SafeAreaView>
+  );
 }
 
 export default SplashPage;

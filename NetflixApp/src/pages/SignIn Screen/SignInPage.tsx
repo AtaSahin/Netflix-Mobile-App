@@ -1,13 +1,15 @@
-import React, { useState } from 'react';
-import { View, Text, TextInput, Button} from 'react-native';
+import React, {useState} from 'react';
+import {View, Text, TextInput, Button} from 'react-native';
 import styles from './SignInPage.styles';
+import {useNavigation} from '@react-navigation/native';
 
 const SignInPage = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const navigation = useNavigation();
 
   const handleSignIn = () => {
-    // Perform sign-in logic here with email and password
+    navigation.navigate('HomePage');
     console.log('Sign in:', email, password);
   };
 
@@ -43,6 +45,5 @@ const SignInPage = () => {
     </View>
   );
 };
-
 
 export default SignInPage;
