@@ -12,6 +12,9 @@ import {
 } from 'react-native';
 import styles from './HomePage.styles';
 import BannerFilm from '../../assets/BannerFilm';
+import type {RootState} from '../../App/store';
+import {useSelector, useDispatch} from 'react-redux';
+import {addFav} from '../../App/features/counter/counterSlice';
 
 function HomePage(props) {
   const [movies, setMovies] = useState([]);
@@ -36,7 +39,9 @@ function HomePage(props) {
       console.error(error);
     }
   };
-
+  const count = useSelector((state: RootState) => state.counter.favFilms);
+  const dispatch = useDispatch();
+  console.log('Movies in favFilms state:', count);
   return (
     <SafeAreaView style={styles.container}>
       <TextInput
@@ -47,6 +52,8 @@ function HomePage(props) {
         onChangeText={text => setSearchQuery(text)}
       />
 
+      <View></View>
+
       <ScrollView>
         <BannerFilm></BannerFilm>
         <View style={styles.filmContainer}>
@@ -54,12 +61,18 @@ function HomePage(props) {
             <View style={{flexDirection: 'row'}}>
               {movies.slice(0, 4).map(movie => (
                 <View style={styles.movieContainer} key={movie.id}>
-                  <Image
-                    style={styles.PreviewposterImage}
-                    source={{
-                      uri: `https://image.tmdb.org/t/p/w500${movie.poster_path}`,
-                    }}
-                  />
+                  <TouchableOpacity
+                    onPress={() => {
+                      dispatch(addFav(movie.id && movie.title));
+                      console.log(`Selected movie: ${movie.title}`); // Log the selected movie
+                    }}>
+                    <Image
+                      style={styles.PreviewposterImage}
+                      source={{
+                        uri: `https://image.tmdb.org/t/p/w500${movie.poster_path}`,
+                      }}
+                    />
+                  </TouchableOpacity>
                 </View>
               ))}
             </View>
