@@ -1,13 +1,8 @@
 import React from 'react';
-import {NavigationContainer} from '@react-navigation/native';
+
 import StackNavigation from './src/Navigation/StackNavigation';
 
-function App(props) {
-  return (
-    <NavigationContainer>
-      <StackNavigation />
-    </NavigationContainer>
-  );
-}
-
+const App = () => {
+  return <StackNavigation />;
+};
 export default App;

@@ -7,67 +7,69 @@ import SplashImageLogo from '../assets/SplashBgLogo';
 import SignInPage from '../pages/SignIn Screen/SignInPage';
 import HomePage from '../pages/Home Screen/HomePage';
 import {NavigationContainer} from '@react-navigation/native';
+import MovieBgLogo from '../assets/SplashBgLogo/MovieBgLogo';
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
 
-function Home() {
+function OurHome() {
   return (
-    <NavigationContainer>
-      <Tab.Navigator screenOptions={{headerShown: false}}>
-        <Tab.Screen name="HomePage" component={HomePage} />
-      </Tab.Navigator>
-    </NavigationContainer>
+    <Tab.Navigator initialRouteName="HomePage">
+      <Tab.Screen name="HomePage" component={HomePage} />
+    </Tab.Navigator>
   );
 }
 
 function StackNavigation() {
   return (
-    <Stack.Navigator initialRouteName="SplashPage">
-      <Stack.Screen
-        name="HomePage"
-        component={HomePage}
-        options={{
-          headerStyle: {
-            backgroundColor: 'black',
-          },
-          headerTitle: () => <SplashImageLogo />,
-          headerBackVisible: true,
-        }}
-      />
-      <Stack.Screen
-        name="SplashPage"
-        component={SplashPage}
-        options={{headerShown: false}}
-      />
-      <Stack.Screen
-        name="Home"
-        component={Home}
-        options={{headerShown: false}}
-      />
-      <Stack.Screen
-        name="InitPage"
-        component={InitPage}
-        options={{
-          headerStyle: {
-            backgroundColor: 'black',
-          },
-          headerTitle: () => <SplashImageLogo />,
-          headerBackVisible: true,
-        }}
-      />
-      <Stack.Screen
-        name="SignInPage"
-        component={SignInPage}
-        options={{
-          headerStyle: {
-            backgroundColor: 'black',
-          },
-          headerTitle: () => <SplashImageLogo />,
-          headerBackVisible: true,
-        }}
-      />
-    </Stack.Navigator>
+    <NavigationContainer>
+      <Stack.Navigator initialRouteName="SplashPage">
+        <Stack.Screen
+          name="OurHome"
+          component={OurHome}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="HomePage"
+          component={HomePage}
+          options={{
+            headerStyle: {
+              backgroundColor: 'black',
+            },
+            headerTitle: () => <MovieBgLogo />,
+            headerBackVisible: true,
+          }}
+        />
+        <Stack.Screen
+          name="SplashPage"
+          component={SplashPage}
+          options={{headerShown: false}}
+        />
+
+        <Stack.Screen
+          name="InitPage"
+          component={InitPage}
+          options={{
+            headerStyle: {
+              backgroundColor: 'black',
+            },
+            headerTitle: () => <SplashImageLogo />,
+            headerBackVisible: true,
+          }}
+        />
+        <Stack.Screen
+          name="SignInPage"
+          component={SignInPage}
+          options={{
+            headerStyle: {
+              backgroundColor: 'black',
+            },
+            headerTitle: () => <SplashImageLogo />,
+            headerBackVisible: true,
+          }}
+        />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
 
