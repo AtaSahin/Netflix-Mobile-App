@@ -15,6 +15,7 @@ import BannerFilm from '../../assets/BannerFilm';
 import type {RootState} from '../../App/store';
 import {useSelector, useDispatch} from 'react-redux';
 import {addFav} from '../../App/features/counter/counterSlice';
+import Icon from 'react-native-vector-icons/FontAwesome';
 
 function HomePage(props) {
   const [movies, setMovies] = useState([]);
@@ -61,11 +62,30 @@ function HomePage(props) {
             <View style={{flexDirection: 'row'}}>
               {movies.slice(0, 4).map(movie => (
                 <View style={styles.movieContainer} key={movie.id}>
-                  <TouchableOpacity
-                    onPress={() => {
-                      dispatch(addFav(movie.id && movie.title));
-                      console.log(`Selected movie: ${movie.title}`); // Log the selected movie
-                    }}>
+                  <TouchableOpacity>
+                    <Icon
+                      onPress={() => {
+                        const existingMovie = count.find(
+                          film => film.id === movie.id,
+                        );
+                        if (!existingMovie) {
+                          dispatch(addFav({id: movie.id, title: movie.title}));
+                          console.log(`Added movie: ${movie.title}`);
+                        }
+                      }}
+                      name={
+                        count.some(film => film.id === movie.id)
+                          ? 'shower'
+                          : 'shower'
+                      }
+                      size={24}
+                      color={
+                        count.some(film => film.id === movie.id)
+                          ? 'red'
+                          : 'black'
+                      }
+                      style={styles.favoriteIcon}
+                    />
                     <Image
                       style={styles.PreviewposterImage}
                       source={{
@@ -81,43 +101,115 @@ function HomePage(props) {
             <View style={{flexDirection: 'row'}}>
               {movies.slice(4, 8).map(movie => (
                 <View style={styles.movieContainer} key={movie.id}>
-                  <Image
-                    style={styles.posterImage}
-                    source={{
-                      uri: `https://image.tmdb.org/t/p/w500${movie.poster_path}`,
-                    }}
-                  />
+                  <TouchableOpacity>
+                    <Icon
+                      onPress={() => {
+                        const existingMovie = count.find(
+                          film => film.id === movie.id,
+                        );
+                        if (!existingMovie) {
+                          dispatch(addFav({id: movie.id, title: movie.title}));
+                          console.log(`Added movie: ${movie.title}`);
+                        }
+                      }}
+                      name={
+                        count.some(film => film.id === movie.id)
+                          ? 'shower'
+                          : 'shower'
+                      }
+                      size={24}
+                      color={
+                        count.some(film => film.id === movie.id)
+                          ? 'red'
+                          : 'black'
+                      }
+                      style={styles.favoriteIcon}
+                    />
+                    <Image
+                      style={styles.posterImage}
+                      source={{
+                        uri: `https://image.tmdb.org/t/p/w500${movie.poster_path}`,
+                      }}
+                    />
+                  </TouchableOpacity>
                 </View>
               ))}
             </View>
           </ScrollView>
-
           <ScrollView horizontal>
             <View style={{flexDirection: 'row'}}>
-              {movies.slice(8, 12).map(movie => (
+              {movies.slice(9, 13).map(movie => (
                 <View style={styles.movieContainer} key={movie.id}>
-                  <Image
-                    style={styles.posterImage}
-                    source={{
-                      uri: `https://image.tmdb.org/t/p/w500${movie.poster_path}`,
-                    }}
-                  />
+                  <TouchableOpacity>
+                    <Icon
+                      onPress={() => {
+                        const existingMovie = count.find(
+                          film => film.id === movie.id,
+                        );
+                        if (!existingMovie) {
+                          dispatch(addFav({id: movie.id, title: movie.title}));
+                          console.log(`Added movie: ${movie.title}`);
+                        }
+                      }}
+                      name={
+                        count.some(film => film.id === movie.id)
+                          ? 'shower'
+                          : 'shower'
+                      }
+                      size={24}
+                      color={
+                        count.some(film => film.id === movie.id)
+                          ? 'red'
+                          : 'black'
+                      }
+                      style={styles.favoriteIcon}
+                    />
+                    <Image
+                      style={styles.posterImage}
+                      source={{
+                        uri: `https://image.tmdb.org/t/p/w500${movie.poster_path}`,
+                      }}
+                    />
+                  </TouchableOpacity>
                 </View>
               ))}
             </View>
           </ScrollView>
-
           <ScrollView horizontal>
             <View style={{flexDirection: 'row'}}>
-              {movies.slice(12, 16).map(movie => (
+              {movies.slice(14, 18).map(movie => (
                 <View style={styles.movieContainer} key={movie.id}>
-                  <Image
-                    style={styles.posterImage}
-                    source={{
-                      uri: `https://image.tmdb.org/t/p/w500${movie.poster_path}`,
-                    }}
-                  />
-                  {/*  <Text style={styles.titleText}>{movie.title}</Text>*/}
+                  <TouchableOpacity>
+                    <Icon
+                      onPress={() => {
+                        const existingMovie = count.find(
+                          film => film.id === movie.id,
+                        );
+                        if (!existingMovie) {
+                          dispatch(addFav({id: movie.id, title: movie.title}));
+                          console.log(`Added movie: ${movie.title}`);
+                        }
+                      }}
+                      name={
+                        count.some(film => film.id === movie.id)
+                          ? 'shower'
+                          : 'shower'
+                      }
+                      size={24}
+                      color={
+                        count.some(film => film.id === movie.id)
+                          ? 'red'
+                          : 'black'
+                      }
+                      style={styles.favoriteIcon}
+                    />
+                    <Image
+                      style={styles.posterImage}
+                      source={{
+                        uri: `https://image.tmdb.org/t/p/w500${movie.poster_path}`,
+                      }}
+                    />
+                  </TouchableOpacity>
                 </View>
               ))}
             </View>

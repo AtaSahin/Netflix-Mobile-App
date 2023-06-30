@@ -45,7 +45,12 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
     marginBottom: 10,
     color: 'white',
-    // Add other search bar styles if needed
+  },
+  favoriteIcon: {
+    position: 'absolute',
+    top: 10,
+    left: 10,
+    zIndex: 1,
   },
 });
 

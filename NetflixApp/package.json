@@ -20,6 +20,9 @@
     "react-native-screens": "^3.22.0",
     "react-native-size-matters": "^0.4.0",
     "react-native-svg": "^13.9.0",
+    "react-native-vector-icons": "^9.2.0",
+    "react-navigation-stack": "^2.10.4",
+    "react-navigation-tabs": "^2.11.2",
     "react-redux": "^8.1.1"
   },
   "devDependencies": {
@@ -31,6 +34,7 @@
     "@tsconfig/react-native": "^3.0.0",
     "@types/metro-config": "^0.76.3",
     "@types/react": "^18.0.24",
+    "@types/react-native-vector-icons": "^6.4.13",
     "@types/react-test-renderer": "^18.0.0",
     "babel-jest": "^29.2.1",
     "eslint": "^8.19.0",
