@@ -9,13 +9,14 @@ import {
   Linking,
   ScrollView,
   TextInput,
+  ToastAndroid,
 } from 'react-native';
 import styles from './HomePage.styles';
 import BannerFilm from '../../assets/BannerFilm';
 import type {RootState} from '../../App/store';
 import {useSelector, useDispatch} from 'react-redux';
 import {addFav} from '../../App/features/counter/counterSlice';
-import Icon from 'react-native-vector-icons/FontAwesome';
+import Icon from 'react-native-vector-icons/MaterialIcons';
 
 function HomePage(props) {
   const [movies, setMovies] = useState([]);
@@ -71,17 +72,24 @@ function HomePage(props) {
                         if (!existingMovie) {
                           dispatch(addFav({id: movie.id, title: movie.title}));
                           console.log(`Added movie: ${movie.title}`);
+                          ToastAndroid.showWithGravityAndOffset(
+                            'Film added to favorites',
+                            ToastAndroid.SHORT,
+                            ToastAndroid.BOTTOM,
+                            25,
+                            50,
+                          );
                         }
                       }}
                       name={
                         count.some(film => film.id === movie.id)
-                          ? 'shower'
-                          : 'shower'
+                          ? 'thumb-up'
+                          : 'control-point'
                       }
                       size={24}
                       color={
                         count.some(film => film.id === movie.id)
-                          ? 'red'
+                          ? 'green'
                           : 'black'
                       }
                       style={styles.favoriteIcon}
@@ -114,13 +122,13 @@ function HomePage(props) {
                       }}
                       name={
                         count.some(film => film.id === movie.id)
-                          ? 'shower'
-                          : 'shower'
+                          ? 'thumb-up'
+                          : 'control-point'
                       }
                       size={24}
                       color={
                         count.some(film => film.id === movie.id)
-                          ? 'red'
+                          ? 'green'
                           : 'black'
                       }
                       style={styles.favoriteIcon}
@@ -153,13 +161,13 @@ function HomePage(props) {
                       }}
                       name={
                         count.some(film => film.id === movie.id)
-                          ? 'shower'
-                          : 'shower'
+                          ? 'thumb-up'
+                          : 'control-point'
                       }
                       size={24}
                       color={
                         count.some(film => film.id === movie.id)
-                          ? 'red'
+                          ? 'green'
                           : 'black'
                       }
                       style={styles.favoriteIcon}
@@ -192,13 +200,13 @@ function HomePage(props) {
                       }}
                       name={
                         count.some(film => film.id === movie.id)
-                          ? 'shower'
-                          : 'shower'
+                          ? 'thumb-up'
+                          : 'control-point'
                       }
                       size={24}
                       color={
                         count.some(film => film.id === movie.id)
-                          ? 'red'
+                          ? 'green'
                           : 'black'
                       }
                       style={styles.favoriteIcon}
