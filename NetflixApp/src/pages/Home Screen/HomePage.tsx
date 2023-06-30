@@ -18,11 +18,16 @@ import {useSelector, useDispatch} from 'react-redux';
 import {addFav} from '../../App/features/counter/counterSlice';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
-function HomePage(props) {
+function HomePage() {
+  interface MovieItem {
+    id: number;
+    title: string;
+  }
+
   const [movies, setMovies] = useState([]);
   const [searchQuery, setSearchQuery] = useState('');
 
-  const filteredMovies = movies.filter(movie =>
+  const filteredMovies = movies.filter((movie: MovieItem) =>
     movie.title.toLowerCase().includes(searchQuery.toLowerCase()),
   );
 
@@ -41,6 +46,10 @@ function HomePage(props) {
       console.error(error);
     }
   };
+  const addFav = movies.filter(movie =>
+    count.map(film => film.id === movie.id),
+  );
+
   const count = useSelector((state: RootState) => state.counter.favFilms);
   const dispatch = useDispatch();
   console.log('Movies in favFilms state:', count);
@@ -118,6 +127,13 @@ function HomePage(props) {
                         if (!existingMovie) {
                           dispatch(addFav({id: movie.id, title: movie.title}));
                           console.log(`Added movie: ${movie.title}`);
+                          ToastAndroid.showWithGravityAndOffset(
+                            'Film added to favorites',
+                            ToastAndroid.SHORT,
+                            ToastAndroid.BOTTOM,
+                            25,
+                            50,
+                          );
                         }
                       }}
                       name={
@@ -157,6 +173,13 @@ function HomePage(props) {
                         if (!existingMovie) {
                           dispatch(addFav({id: movie.id, title: movie.title}));
                           console.log(`Added movie: ${movie.title}`);
+                          ToastAndroid.showWithGravityAndOffset(
+                            'Film added to favorites',
+                            ToastAndroid.SHORT,
+                            ToastAndroid.BOTTOM,
+                            25,
+                            50,
+                          );
                         }
                       }}
                       name={
@@ -196,6 +219,59 @@ function HomePage(props) {
                         if (!existingMovie) {
                           dispatch(addFav({id: movie.id, title: movie.title}));
                           console.log(`Added movie: ${movie.title}`);
+                          ToastAndroid.showWithGravityAndOffset(
+                            'Film added to favorites',
+                            ToastAndroid.SHORT,
+                            ToastAndroid.BOTTOM,
+                            25,
+                            50,
+                          );
+                        }
+                      }}
+                      name={
+                        count.some(film => film.id === movie.id)
+                          ? 'thumb-up'
+                          : 'control-point'
+                      }
+                      size={24}
+                      color={
+                        count.some(film => film.id === movie.id)
+                          ? 'green'
+                          : 'black'
+                      }
+                      style={styles.favoriteIcon}
+                    />
+                    <Image
+                      style={styles.posterImage}
+                      source={{
+                        uri: `https://image.tmdb.org/t/p/w500${movie.poster_path}`,
+                      }}
+                    />
+                  </TouchableOpacity>
+                </View>
+              ))}
+            </View>
+          </ScrollView>
+          <ScrollView horizontal>
+            <View style={{flexDirection: 'row'}}>
+              {movies.slice(14, 18).map(movie => (
+                <View style={styles.movieContainer} key={movie.id}>
+                  <TouchableOpacity>
+                    <Icon
+                      onPress={() => {
+                        const existingMovie = count.find(
+                          film => film.id === movie.id,
+                        );
+                        if (!existingMovie) {
+                          dispatch(addFav({id: movie.id, title: movie.title}));
+                          console.log(`Added movie: ${movie.title}`);
+                          ToastAndroid.showWithGravityAndOffset(
+                            'Film added to favorites',
+                            ToastAndroid.SHORT,
+                            ToastAndroid.BOTTOM,
+                            25,
+                            50,
+                          );
                         }
                       }}
                       name={

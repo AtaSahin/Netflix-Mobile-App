@@ -8,6 +8,7 @@ import SplashImageLogo from '../assets/SplashBgLogo';
 import SignInPage from '../pages/SignIn Screen/SignInPage';
 import HomePage from '../pages/Home Screen/HomePage';
 import MovieBgLogo from '../assets/SplashBgLogo/MovieBgLogo';
+import FavoritesPage from '../pages/Favorites Screen/FavoritesPage';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
 const Stack = createNativeStackNavigator();
@@ -28,16 +29,19 @@ const RootNavigation = () => {
           headerShown: false,
           headerStyle: {elevation: 5, shadowOpacity: 5, borderBottomWidth: 1},
           tabBarIcon: ({color, size}) => (
-            <Icon name="home" color={'white'} size={30} />
+            <Icon name="home" color={color} size={size} />
           ),
         }}
       />
-
       <Tab.Screen
-        name="SignInPage"
-        component={SignInPage}
+        name="FavoritesPage"
+        component={FavoritesPage}
         options={{
           headerShown: false,
+          headerStyle: {elevation: 5, shadowOpacity: 5, borderBottomWidth: 1},
+          tabBarIcon: ({color, size}) => (
+            <Icon name="favorite" color={color} size={size} />
+          ),
         }}
       />
     </Tab.Navigator>
@@ -73,6 +77,11 @@ const StackNavigations = () => {
         <Stack.Screen
           name="SplashPage"
           component={SplashPage}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="FavoritesPage"
+          component={FavoritesPage}
           options={{headerShown: false}}
         />
 
