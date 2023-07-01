@@ -11,13 +11,7 @@ function FavoritesPage(props) {
   const dispatch = useDispatch();
   const favoriteMovies = movies.filter(movie => count.includes(movie.id));
   console.log('Movies in favFilms state:', count);
-  return (
-    <View>
-      <Text onPress={() => console.log('Movies in favFilms state:', count)}>
-        {count}
-      </Text>
-    </View>
-  );
+  return <View></View>;
 }
 
 export default FavoritesPage;
