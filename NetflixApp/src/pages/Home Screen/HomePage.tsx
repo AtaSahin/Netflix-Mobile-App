@@ -46,9 +46,6 @@ function HomePage() {
       console.error(error);
     }
   };
-  const addFav = movies.filter(movie =>
-    count.map(film => film.id === movie.id),
-  );
 
   const count = useSelector((state: RootState) => state.counter.favFilms);
   const dispatch = useDispatch();

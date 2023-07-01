@@ -1,5 +1,5 @@
 import {createSlice} from '@reduxjs/toolkit';
-import type {PayloadAction} from '@reduxjs/toolkit';
+import type {PayloadAction, Action} from '@reduxjs/toolkit';
 
 export interface CounterState {
   favFilms: string[];

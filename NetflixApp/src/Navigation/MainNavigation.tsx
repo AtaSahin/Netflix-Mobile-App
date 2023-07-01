@@ -18,7 +18,7 @@ const RootNavigation = () => {
   const myIcon = <Icon name="rocket" size={30} color="#900" />;
   return (
     <Tab.Navigator
-      initialRouteName="SignInPage"
+      initialRouteName="HomePage"
       screenOptions={{
         tabBarStyle: {backgroundColor: 'black'},
       }}>
